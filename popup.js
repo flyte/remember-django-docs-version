@@ -23,4 +23,8 @@ function setButton() {
 
 window.onload = function() {
     setButton()
+    chrome.storage.sync.get("version", function(result) {
+        const versionSpan = document.getElementById("current_version");
+        versionSpan.innerText = (result === undefined) ? "unset" : result.version
+    })
 }
