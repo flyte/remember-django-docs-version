@@ -1,16 +1,20 @@
 {
-    "manifest_version": 2,
-    "name": "Remember Django Docs Version",
-    "version": "0.0.2",
-    "description": "Remembers which version of Django docs you've selected",
-    "permissions": [
-        "storage"
-    ],
-    "content_scripts": [{
-        "js": ["docs_content.js"],
-        "matches": ["https://docs.djangoproject.com/*"]
-    }],
-    "browser_action": {
-        "default_popup": "popup.html"
+  "manifest_version": 2,
+  "name": "Remember Django Docs Version",
+  "version": "0.0.2",
+  "description": "Remembers which version of Django docs you've selected",
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "js": ["docs_content.js"],
+      "matches": ["https://docs.djangoproject.com/*"]
     }
-  }
+  ],
+  "page_action": {
+    "default_popup": "popup.html"
+  },
+  "icons": { "128": "thumbnail.png" }
+}

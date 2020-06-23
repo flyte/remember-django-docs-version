@@ -12,31 +12,16 @@ function getCurrentUrlDetails() {
 function ensureVersion(desiredVersion) {
   const [prefix, currentVersion, suffix] = getCurrentUrlDetails();
   if (currentVersion !== desiredVersion) {
-    console.log(
-      currentVersion +
-        " is not " +
-        desiredVersion +
-        " so navigating to " +
-        prefix +
-        desiredVersion +
-        suffix
-    );
     window.location.replace(prefix + desiredVersion + suffix);
-  } else {
-    console.log("All good, we're on the Django docs version that we want.");
   }
 }
 
 chrome.storage.sync.get("disabled", function (disabledResult) {
   if (disabledResult !== undefined && disabledResult.disabled) {
-    console.log("Remember Django Version is disabled.");
     return;
   }
   chrome.storage.sync.get("version", function (result) {
-    if (result.version === undefined) {
-      console.log("No current Django docs version is set.");
-    } else {
-      console.log("Current Django version set to " + result.version);
+    if (result.version !== undefined) {
       ensureVersion(result.version);
     }
   });
