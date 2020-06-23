@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Remember Django Docs Version",
-  "version": "0.0.2",
-  "description": "Remembers which version of Django docs you've selected",
+  "version": "0.0.3",
+  "description": "Remembers which version of Django docs you've selected.",
   "permissions": ["storage", "tabs"],
   "background": {
     "scripts": ["background.js"]
